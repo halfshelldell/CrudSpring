@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sneakers</title>
+    <link rel="icon" type="image/png"
+          href="https://sghq.us/wp-content/uploads/2014/03/Sneaker-Favicon.png"/>
+</head>
+<body>
+{{#username}}
+<form action="/logout" method="post" style="float:right;">
+    <button type="submit">Logout</button>
+</form>
+WELCOME, {{.}}:
+
+<form action="/create-sneaker" method="post">
+    <input type="text" name="brand" placeholder="Enter the brand"/>
+    <input type="text" name="name" placeholder="Enter the name"/>
+    <input type="number" name="year" placeholder="Enter the year"/>
+    <input type="number" name="price" placeholder="Enter the price"/>
+    <input type="number" name="size" placeholder="Enter your size"/>
+    <button class="submit-button" type="submit">Submit</button>
+</form>
+{{/username}}
+<br>
+
+{{#sneaker}}
+{{username}}: {{brand}} {{name}} {{year}} {{price}} &amp; {{size}}
+<form action="/delete-sneaker" method="post" style="display: inline-block">
+<input type="hidden" name="id" value="{{id}}"/>
+<button type="submit">Delete Restaurant</button>
+</form><br>
+{{/sneaker}}
+
+</body>
+</html>
