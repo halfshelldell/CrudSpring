@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" type="image/png"
+          href="https://sghq.us/wp-content/uploads/2014/03/Sneaker-Favicon.png"/>
+</head>
+<body>
+{{^username}}
+<form action="/login" method="post">
+    <input type="text" name="username" placeholder="Username"/>
+    <input type="password" name="password" placeholder="Password"/>
+    <button type="submit">Login</button>
+</form>
+{{/username}}
+
+{{#username}}
+<form action="/logout" method="post" style="float:right;">
+    <button type="submit">Logout</button>
+</form>
+WELCOME, {{.}}:
+{{/username}}
+</body>
+</html>
