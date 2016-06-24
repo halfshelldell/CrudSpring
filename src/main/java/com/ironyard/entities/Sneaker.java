@@ -45,6 +45,16 @@ public class Sneaker {
         this.user = user;
     }
 
+    public Sneaker(int id, String brand, String name, int year, float price, int size, User user) {
+        this.id = id;
+        this.brand = brand;
+        this.name = name;
+        this.year = year;
+        this.price = price;
+        this.size = size;
+        this.user = user;
+    }
+
     public int getId() {
         return id;
     }

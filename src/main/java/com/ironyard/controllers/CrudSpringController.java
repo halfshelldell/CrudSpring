@@ -41,13 +41,12 @@ public class CrudSpringController {
 
     @RequestMapping(path = "/login", method = RequestMethod.POST)
     public String login(HttpSession session, String username, String password) throws Exception {
-
         User user = users.findByName(username);
         if (user == null) {
             user = new User(username, PasswordStorage.createHash(password));
             users.save(user);
         }
-        else if (PasswordStorage.verifyPassword(password, user.getPassword())) {
+        else if (!PasswordStorage.verifyPassword(password, user.getPassword())) {
             throw new Exception("Wrong password!");
         }
 
@@ -70,10 +69,23 @@ public class CrudSpringController {
         return "redirect:/";
     }
 
-    @RequestMapping(path = "delete-sneaker", method = RequestMethod.POST)
-    public String deleteSneaker(HttpSession session, int id) {
+    /*@RequestMapping(path = "edit-sneaker", method = RequestMethod.POST)
+    public String edit(HttpSession session, String brand, String name, int year, float price, int size) {
         String username = (String) session.getAttribute("username");
-        if (!users.findByName()username.equals(username))
+        User user = users.findByName(username);
+        Sneaker editSneaker = new Sneaker(brand, name, year, price, size, user);
+        sneakers.save(editSneaker);
+        session.setAttribute("sneaker",editSneaker);
+        return "redirect:/";
+    }*/
+
+    @RequestMapping(path = "delete-sneaker", method = RequestMethod.POST)
+    public String deleteSneaker(HttpSession session, int id) throws Exception {
+        String username = (String) session.getAttribute("username");
+        User user = users.findByName(username);
+        if (!user.getName().equals(username)) {
+            throw new Exception("You can not delete this post!");
+        }
         sneakers.delete(id);
         return "redirect:/";
     }
