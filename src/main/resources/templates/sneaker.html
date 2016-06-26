@@ -26,13 +26,13 @@ WELCOME, {{.}}:
 
 {{#sneaker}}
 {{#user}}{{name}}{{/user}}: {{brand}} {{name}} {{year}} {{price}} &amp; {{size}}
-{{#canDelete}}
+{{#isUser}}
 <a href="/edit?id={{id}}"><button style="display: inline-block" type="button">Edit</button></a>
 <form action="/delete-sneaker" method="post" style="display: inline-block">
     <input type="hidden" name="id" value="{{id}}"/>
     <button type="submit">Delete</button>
 </form>
-{{/canDelete}}<br>
+{{/isUser}}<br>
 {{/sneaker}}
 
 </body>
