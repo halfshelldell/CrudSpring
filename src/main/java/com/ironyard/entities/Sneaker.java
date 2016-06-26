@@ -33,6 +33,9 @@ public class Sneaker {
     @ManyToOne
     User user;
 
+    @Transient
+    boolean isUser;
+
     public Sneaker() {
     }
 
@@ -109,5 +112,13 @@ public class Sneaker {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean isUser() {
+        return isUser;
+    }
+
+    public void setIsUser(boolean isUser) {
+        this.isUser = isUser;
     }
 }

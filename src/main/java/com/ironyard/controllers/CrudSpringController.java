@@ -34,7 +34,11 @@ public class CrudSpringController {
         }
         else {
             model.addAttribute("username", username);
-            model.addAttribute("sneaker", sneakers.findAll());
+            Iterable<Sneaker> s = sneakers.findAll();
+            for (Sneaker sneaker : s) {
+                sneaker.setIsUser(sneaker.getUser().getName().equals(username));
+            }
+            model.addAttribute("sneaker", s);
             return "sneaker";
         }
     }
@@ -69,26 +73,35 @@ public class CrudSpringController {
         return "redirect:/";
     }
 
-    /*@RequestMapping(path = "edit-sneaker", method = RequestMethod.POST)
+    @RequestMapping(path = "edit-sneaker", method = RequestMethod.POST)
     public String edit(HttpSession session, String brand, String name, int year, float price, int size) {
         String username = (String) session.getAttribute("username");
         User user = users.findByName(username);
         Sneaker editSneaker = new Sneaker(brand, name, year, price, size, user);
         sneakers.save(editSneaker);
-        session.setAttribute("sneaker",editSneaker);
+        session.setAttribute("sneaker", editSneaker);
         return "redirect:/";
-    }*/
+    }
+
+    @RequestMapping(path = "edit", method = RequestMethod.GET)
+    public String editRoute(HttpSession session, Model model, int id) throws Exception {
+        Sneaker sneaker = sneakers.findOne(id);
+        String username = (String) session.getAttribute("username");
+        if (!sneaker.getUser().getName().equals(username)) {
+            throw new Exception("You can not edit this post!");
+        }
+        model.addAttribute("id", id);
+        return "edit";
+    }
 
     @RequestMapping(path = "delete-sneaker", method = RequestMethod.POST)
     public String deleteSneaker(HttpSession session, int id) throws Exception {
+        Sneaker sneaker = sneakers.findOne(id);
         String username = (String) session.getAttribute("username");
-        User user = users.findByName(username);
-        if (!user.getName().equals(username)) {
+        if (!sneaker.getUser().getName().equals(username)) {
             throw new Exception("You can not delete this post!");
         }
         sneakers.delete(id);
         return "redirect:/";
     }
-
-
 }
