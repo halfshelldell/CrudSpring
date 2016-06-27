@@ -1,0 +1,132 @@
+html {
+    size: 1000px;
+}
+
+body {
+    background-image: url("http://wallpaper.zone/img/1861720.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+h1 {
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+    text-shadow: white 2px 2px 4px;
+    font-weight: bold;
+    color: #000000;
+}
+
+#login
+{
+    background: #333;
+    color: #ccc;
+    width: 150px;
+    padding: 6px 15px 6px 35px;
+    transition: 500ms all ease;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+#login:hover
+{
+
+    box-shadow: 12px 13px 0px rgba(117, 117, 163, 0.38),
+    -11px -14px 0px rgba(204, 0, 0, 0.28),
+    18px -24px 0px rgba(0, 0, 0, 0.34),
+    33px -6px 0px #fff;
+}
+
+#entry
+{
+    background: #333;
+    color: #ccc;
+    width: 100px;
+    padding: 6px 15px 6px 35px;
+    transition: 500ms all ease;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+#entry:hover
+{
+
+    box-shadow: 12px 13px 0px rgba(117, 117, 163, 0.38),
+    -11px -14px 0px rgba(204, 0, 0, 0.28),
+    18px -24px 0px rgba(0, 0, 0, 0.34),
+    33px -6px 0px #fff;
+}
+
+#login-button {
+    background-color:#000;
+    color:#fff;
+    font-family:'Helvetica Neue',sans-serif;
+    font-size:18px;
+    line-height:30px;
+    border-radius:20px;
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    border:0;
+    text-shadow:#FFFFFF 0 -1px 0;
+    width:100px;
+    height:25px
+}
+
+#sub {
+    font-family: Impact, sans-serif;
+    text-shadow: white 2px 2px 4px;
+}
+
+.submit-button {
+    background-color:#000;
+    color:#fff;
+    font-family:'Helvetica Neue',sans-serif;
+    border-radius:20px;
+    border:0;
+    text-shadow:#000 0 -1px 0;
+    height: 20px;
+    width: 100px;
+}
+
+/* used a css button generator */
+.exit-btn:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.exit-btn {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 25px 80px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.exit-btn-1 {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 6px #000;
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    padding: 0;
+}
+
+img {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}

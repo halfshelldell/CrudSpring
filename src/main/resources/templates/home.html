@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="icon" type="image/png"
           href="https://sghq.us/wp-content/uploads/2014/03/Sneaker-Favicon.png"/>
 </head>
 <body>
+<br>
 {{^username}}
 <form action="/login" method="post">
-    <input type="text" name="username" placeholder="Username"/>
-    <input type="password" name="password" placeholder="Password"/>
-    <button type="submit">Login</button>
+    <input id="login" type="text" name="username" placeholder="Username"/>
+    <input id="login" type="password" name="password" placeholder="Password"/>
+    <button id="login-button" type="submit">Login</button>
 </form>
 {{/username}}
 

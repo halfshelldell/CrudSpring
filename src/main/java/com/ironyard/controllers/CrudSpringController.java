@@ -26,7 +26,7 @@ public class CrudSpringController {
     SneakerRepository sneakers;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(HttpSession session, Model model) {
+    public String home(HttpSession session, Model model, String search) {
         String username = (String) session.getAttribute("username");
 
         if (username == null) {
@@ -74,10 +74,10 @@ public class CrudSpringController {
     }
 
     @RequestMapping(path = "edit-sneaker", method = RequestMethod.POST)
-    public String edit(HttpSession session, String brand, String name, int year, float price, int size) {
+    public String edit(HttpSession session, int id, String brand, String name, int year, float price, int size) {
         String username = (String) session.getAttribute("username");
         User user = users.findByName(username);
-        Sneaker editSneaker = new Sneaker(brand, name, year, price, size, user);
+        Sneaker editSneaker = new Sneaker(id, brand, name, year, price, size, user);
         sneakers.save(editSneaker);
         session.setAttribute("sneaker", editSneaker);
         return "redirect:/";
