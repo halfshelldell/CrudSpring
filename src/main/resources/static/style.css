@@ -12,6 +12,7 @@ h1 {
     font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     text-shadow: white 2px 2px 4px;
     font-weight: bold;
+    text-transform: uppercase;
     color: #000000;
 }
 
@@ -65,22 +66,24 @@ h1 {
     border:0;
     text-shadow:#FFFFFF 0 -1px 0;
     width:100px;
-    height:25px
+    height:35px
 }
 
 #sub {
     font-family: Impact, sans-serif;
     text-shadow: white 2px 2px 4px;
+    text-transform: uppercase;
 }
 
 .submit-button {
     background-color:#000;
     color:#fff;
     font-family:'Helvetica Neue',sans-serif;
+    font-size:18px;
     border-radius:20px;
     border:0;
     text-shadow:#000 0 -1px 0;
-    height: 20px;
+    height: 30px;
     width: 100px;
 }
 

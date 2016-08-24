@@ -26,7 +26,7 @@ public class CrudSpringController {
     SneakerRepository sneakers;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(HttpSession session, Model model, String search) {
+    public String home(HttpSession session, Model model, String search, String brand, Integer year) throws Exception {
         String username = (String) session.getAttribute("username");
 
         if (username == null) {
@@ -34,11 +34,30 @@ public class CrudSpringController {
         }
         else {
             model.addAttribute("username", username);
+
             Iterable<Sneaker> s = sneakers.findAll();
             for (Sneaker sneaker : s) {
                 sneaker.setIsUser(sneaker.getUser().getName().equals(username));
             }
             model.addAttribute("sneaker", s);
+
+            Iterable<Sneaker> sneak;
+            if (search != null) {
+                sneak = sneakers.searchBrand(search.toLowerCase());
+            }
+            else if (brand != null || year != null) {
+                sneak = sneakers.findByBrandAndYear(brand, year);
+            }
+            else if (brand != null) {
+                sneak = sneakers.findByBrand(brand);
+            }
+            else if (year != null) {
+                sneak = sneakers.findByYear(year);
+            }
+            else {
+                sneak = sneakers.findByUser(users.findByName(username));
+            }
+            model.addAttribute("sneaker", sneak);
             return "sneaker";
         }
     }

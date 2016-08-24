@@ -14,6 +14,11 @@
 </form>
 <h1>WELCOME, {{.}}:</h1>
 
+<form action="/" method="get">
+    <input type="text" name="search" placeholder="Search Brand or Year"/>
+    <button type="submit">Search</button>
+</form>
+
 <form action="/create-sneaker" method="post">
     <input id="entry" type="text" name="brand" placeholder="Enter the brand"/>
     <input id="entry" type="text" name="name" placeholder="Enter the name"/>
@@ -26,7 +31,7 @@
 <br>
 
 {{#sneaker}}
-<ol id="sub">{{#user}}{{name}}{{/user}}: {{brand}} {{name}} {{year}} {{price}} &amp; {{size}}</ol>
+<ol id="sub">{{#user}}{{name}}{{/user}}: {{brand}} {{name}} {{year}} ${{price}} &amp; {{size}}</ol>
 {{#isUser}}
 <a href="/edit?id={{id}}"><button style="display: inline-block" type="button">Edit</button></a>
 <form action="/delete-sneaker" method="post" style="display: inline-block">
